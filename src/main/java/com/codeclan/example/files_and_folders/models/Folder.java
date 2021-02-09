@@ -11,39 +11,35 @@ import java.util.List;
 public class Folder {
 
     @Column
-    private String titles;
+    private String title;
 
-    @OneToMany(mappedBy = "folder")
     @JsonIgnoreProperties({"folder"})
+    @OneToMany(mappedBy = "folder")
     private List<File> files;
 
-    @ManyToOne
-    @JoinColumn(name= "user_id", nullable = false)
     @JsonIgnoreProperties({"folders"})
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-
-    public Folder(String titles, User user) {
-        this.titles = titles;
-        this.user = user;
+    public Folder(String title, User user){
+        this.title = title;
+        this.user  = user;
         this.files = new ArrayList<>();
     }
 
-    public Folder(){
+    public Folder() {}
 
+    public String getTitle() {
+        return title;
     }
 
-    public String getTitles() {
-        return titles;
-    }
-
-    public void setTitles(String titles) {
-        this.titles = titles;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<File> getFiles() {

@@ -21,9 +21,9 @@ public class File {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name= "folder_id", nullable = false)
     @JsonIgnoreProperties({"folders"})
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
     private Folder folder;
 
     public File(String name, String extension, int size, Folder folder) {
@@ -32,6 +32,8 @@ public class File {
         this.size = size;
         this.folder = folder;
     }
+
+    public File() {}
 
     public String getName() {
         return name;

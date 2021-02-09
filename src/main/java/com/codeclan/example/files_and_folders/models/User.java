@@ -17,14 +17,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @OneToMany(mappedBy = "user")
     @JsonIgnoreProperties({"user"})
+    @OneToMany(mappedBy = "user")
     private List<Folder> folders;
 
     public User(String name) {
         this.name = name;
         this.folders = new ArrayList<>();
+    }
+
+    public User() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -35,14 +44,6 @@ public class User {
         this.name = name;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public List<Folder> getFolders() {
         return folders;
     }
@@ -50,4 +51,5 @@ public class User {
     public void setFolders(List<Folder> folders) {
         this.folders = folders;
     }
+
 }
