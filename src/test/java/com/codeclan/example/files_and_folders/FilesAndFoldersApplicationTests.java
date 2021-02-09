@@ -27,15 +27,17 @@ class FilesAndFoldersApplicationTests {
 	}
 
 	@Test
-	public void createFilesUsersAndFolders(){
-		User user1 = new User("Mitch");
-		userRepository.save(user1);
+	public void canAddFilesFoldersAndUsers() {
 
-		Folder folder1 = new Folder("User Folder", user1);
-		folderRepository.save(folder1);
+		User user = new User("Mitch");
+		userRepository.save(user);
 
-		File file1 = new File("Homework", ".txt", 5, folder1);
-		fileRepository.save(file1);
+		Folder folder = new Folder("Mitch's Folder", user);
+		folderRepository.save(folder);
+
+		File file = new File("Mitch's Homework", "pdf", 23, folder);
+		fileRepository.save(file);
 	}
+
 
 }
